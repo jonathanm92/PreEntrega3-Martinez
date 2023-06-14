@@ -24,10 +24,6 @@ class Alumno {
         this.nota = nota;
     }
 
-    get_datos(){
-        alert(`Nombre: ${this.nombre} \nEdad: ${this.edad} \nNota: ${this.nota}`);
-        console.log(`Nombre: ${this.nombre} \nEdad: ${this.edad} \nNota: ${this.nota}`);
-    }
     setNombre(nombre){
         this.nombre = nombre;
     }
@@ -43,7 +39,7 @@ function isStudent (estudiante){
 
 }
 
-// Declaracion de arreglo
+// Declaracion del arreglo vacio de objetos
 
 let students = [];
 
@@ -53,12 +49,6 @@ let fieldBusqueda;
 let resultadoBusqueda;
 let recuperar_students = localStorage.getItem("students");
 
-// Agregando datos a nuestro arreglo para prueba
-students.push(new Alumno("Jose", 24, "B"));
-students.push(new Alumno("Pedro", 34, "A"));
-students.push(new Alumno("Thomas", 14, "C"));
-
-//Agregando objeto al local storage
 
 //variables de los botones
 
@@ -71,10 +61,8 @@ const btnActualizar = document.getElementById("btn-actualizar");
 
 
 //variables suplementarias
-const containerNotas = document.getElementById("container_notas");
 const agregarContainer = document.getElementById("agregar_wrapper");
 const periodosSeleccionados = document.querySelector(".periodos");
-const taskForm = document.getElementById('task-form')
 const listaAlumnos = document.getElementById("listaAlumnos");
 const opcionActualizar = document.querySelector(".opcionActualizar");
 let busquedaForm = document.getElementById("busqueda_wrapper");
@@ -119,7 +107,7 @@ btnFinAgregar.addEventListener("click", ()=>{
     }else{
         let notas = 0; 
         for (let [i,nota] of todasNotas.entries()){
-            if(nota.value == ""){
+            if(nota.value == "" || nota.value < 0 || nota.value > 100){
                 alert("Valor incorrecto en la nota #" + (i+1) );
                 break;
             }else{
@@ -142,7 +130,8 @@ btnFinAgregar.addEventListener("click", ()=>{
                 for (let nota of todasNotas){
                     nota.value = "";
                 }
-            agregarContainer.style.display = 'none';
+                agregarContainer.style.display = 'none';
+                listaAlumnos.style.display = 'none';
             }else{
                 let estudiante = new Alumno (name, age, calculadorLetra(notas))
                 students.push(estudiante);
@@ -155,29 +144,13 @@ btnFinAgregar.addEventListener("click", ()=>{
                     nota.value = "";
                 }
                 agregarContainer.style.display = 'none';
+                listaAlumnos.style.display = 'none';
             }
 
         }
     }
 
 })
-
-//-------------- Boton de borrar Alumnos --------//
-
-// btnBorrar.addEventListener("click", ()=>{
-//     estudianteBusqueda = prompt("Introduzca el estudiante que desea borrar: ");
-//     resultadoBusqueda = students.find(isStudent);
-//         if (resultadoBusqueda){
-//             students = students.filter((person) => person.nombre != estudianteBusqueda);
-//             alert(`El alumno ${estudianteBusqueda} fue borrado de la base de datos`);
-//         }
-//         else{
-//             alert(`El alumno ${estudianteBusqueda} NO se encuentra en la base de datos`);
-//         }
-
-
-// })
-
 
 //-------------- Boton de listar Alumnos --------//
 
@@ -195,7 +168,7 @@ btnListaAlumnos.addEventListener("click", ()=>{
                 listaAlumnos.innerHTML += `
                 <div class="alumnoEnLista">
                     <h1>${alumno.nombre}</h1>
-                    <h1>${alumno.edad} ${alumno.nota}</h1>
+                    <h1> --- ${alumno.edad} --- ${alumno.nota}</h1>
                     <button class="borrar_alumno">Borrar</button>
                 </div>
                 `;
