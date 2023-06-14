@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.hdBase{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container{
+    text-align: center;
+    margin-top: 100px;
+}
+.btn_wrapper{
+    margin-top: 25px;
+}
+.agregar_wrapper{
+    display: none;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: #0f1419;
+    border-style: solid;
+    border-radius: 20px;
+    line-height: 24px;
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.agregar-head{
+    font-weight: bolder;
+}
+.agregar_periodoSelect{
+    font-weight: bold;
+}
+.agregar_periodo-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.alumnoEnLista{
+    display: flex;
+    color: red;
+    justify-content: center;
+}
+.busqueda_wrapper{
+    display: none;
+    margin-top: 10px;
+}
+.btn {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 30px;
+    border-radius: 25px;
+    border-color: #ff0000;
+    color: #0f1419;
+    background: #dfe1e5;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.btn_finalizar{
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px;
+    font-weight: bolder;
+}
+.numberInput{
+    width: 35px;
+}
+.notaInput{
+    width: 35px;
+}
+.agregar_wrapper-head{
+    margin-top: 20px;
+}
+li{
+    list-style-type: none;
+}
+.opcionesBusqueda{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.divActualizar{
+    display: none;
+}
+.opcionActualizar{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn_actualizar{
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
