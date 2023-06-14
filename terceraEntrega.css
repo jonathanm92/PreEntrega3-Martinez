@@ -2,15 +2,33 @@
     margin:0;
     padding:0;
 }
+body{
+    background-color: #0f1419;
+    color: white;
+}
 
 .hdBase{
     text-align: center;
     margin-top: 50px;
 }
-
+.btn:hover{
+    transform: translateY(0) scale(1.1);
+    color: black;
+    background-color: #e34444;
+    transition: 0.5s;
+}
 .container{
+    position: absolute;
     text-align: center;
-    margin-top: 100px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: blue;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 30px;
 }
 .btn_wrapper{
     margin-top: 25px;
@@ -20,7 +38,8 @@
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    border: #0f1419;
+    border: red;
+    background-color: black;
     border-style: solid;
     border-radius: 20px;
     line-height: 24px;
@@ -29,6 +48,10 @@
     padding-bottom: 10px;
     padding-left: 30px;
     padding-right: 30px;
+}
+.listaAlumnos{
+    border: red;
+    background-color: black;
 }
 .agregar-head{
     font-weight: bolder;
@@ -55,11 +78,12 @@
     margin-top: 30px;
     border-radius: 25px;
     border-color: #ff0000;
-    color: #0f1419;
-    background: #dfe1e5;
+    color: white;
+    background: black;
     padding: 10px 20px 10px 20px;
     font-size: 20px;
     font-weight: bolder;
+    width: 300px;
 }
 .btn_finalizar{
     margin-left: 4px;

@@ -63,12 +63,12 @@ students.push(new Alumno("Thomas", 14, "C"));
 //variables de los botones
 
 const btnAgregar = document.getElementById("btn-Agregar");
-const btnBorrar = document.getElementById("btn-Borrar");
 const btnListaAlumnos = document.getElementById("btn-ListaAlumnos");
 const btnBuscarAlumno = document.getElementById("btn-BuscarAlumnos");
 const btnFinAgregar = document.getElementById("btn-Finalizar");
 const btnSearch = document.getElementById("btn-search");
 const btnActualizar = document.getElementById("btn-actualizar");
+
 
 //variables suplementarias
 const containerNotas = document.getElementById("container_notas");
@@ -110,6 +110,7 @@ periodosSeleccionados.addEventListener("change", (e) => {
 
 btnFinAgregar.addEventListener("click", ()=>{
     let name = document.getElementById("task-nombre").value;
+    name = name.trim();
     let age = document.getElementById("task-edad").value;
     let todasNotas = document.querySelectorAll(".notaInput");
     let j = 0;
@@ -163,19 +164,19 @@ btnFinAgregar.addEventListener("click", ()=>{
 
 //-------------- Boton de borrar Alumnos --------//
 
-btnBorrar.addEventListener("click", ()=>{
-    estudianteBusqueda = prompt("Introduzca el estudiante que desea borrar: ");
-    resultadoBusqueda = students.find(isStudent);
-        if (resultadoBusqueda){
-            students = students.filter((person) => person.nombre != estudianteBusqueda);
-            alert(`El alumno ${estudianteBusqueda} fue borrado de la base de datos`);
-        }
-        else{
-            alert(`El alumno ${estudianteBusqueda} NO se encuentra en la base de datos`);
-        }
+// btnBorrar.addEventListener("click", ()=>{
+//     estudianteBusqueda = prompt("Introduzca el estudiante que desea borrar: ");
+//     resultadoBusqueda = students.find(isStudent);
+//         if (resultadoBusqueda){
+//             students = students.filter((person) => person.nombre != estudianteBusqueda);
+//             alert(`El alumno ${estudianteBusqueda} fue borrado de la base de datos`);
+//         }
+//         else{
+//             alert(`El alumno ${estudianteBusqueda} NO se encuentra en la base de datos`);
+//         }
 
 
-})
+// })
 
 
 //-------------- Boton de listar Alumnos --------//
@@ -186,20 +187,43 @@ btnListaAlumnos.addEventListener("click", ()=>{
     } else {
         recuperar_students = localStorage.getItem("students");
         if(recuperar_students != null){
-            listaAlumnos.innerHTML = `Nombre --- Edad -- Calificacion`;
+            listaAlumnos.innerHTML = `
+            <div>Nombre --- Edad -- Calificacion</div>`;
             students = JSON.parse(recuperar_students);
             listaAlumnos.style.display = 'block';
             for (let alumno of students){
                 listaAlumnos.innerHTML += `
                 <div class="alumnoEnLista">
-                    <h1>${alumno.nombre} ${alumno.edad} ${alumno.nota}</h1>
+                    <h1>${alumno.nombre}</h1>
+                    <h1>${alumno.edad} ${alumno.nota}</h1>
+                    <button class="borrar_alumno">Borrar</button>
                 </div>
                 `;
+            }
+            let btnBorrar = document.querySelectorAll(".borrar_alumno");
+            for (let btn of btnBorrar){
+                btn.addEventListener("click", (e)=>{
+                    let padre = e.target.parentNode.children[0].innerText;
+                    console.log(padre);
+                    for(let alumno of students){
+                        console.log(alumno);
+                    }
+                    students = students.filter((person) => person.nombre != padre);
+                    for(let alumno of students){
+                        console.log(alumno);
+                    }
+                    let students_JSON = JSON.stringify(students);
+                    localStorage.setItem("students", students_JSON);
+                    alert("Alumno Borrado!");
+                    listaAlumnos.style.display = 'none';
+                })
             }
         }
     }
 
 })
+
+
 
 //-------------- Boton de buscar Alumnos --------//
 
